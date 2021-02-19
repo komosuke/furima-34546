@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :charge
   belongs_to :area
   belongs_to :day
+  belongs_to :user
   has_one_attached :image
 
   validates :product, :description, :price, :image, presence: true
