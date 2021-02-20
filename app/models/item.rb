@@ -8,15 +8,14 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-
   with_options presence: true do
-  validates :product
-  validates :description
-  validates :price, format: { with: /\A[0-9]+\z/ }
-  validates :image
+    validates :product
+    validates :description
+    validates :price, format: { with: /\A[0-9]+\z/ }
+    validates :image
   end
 
-  validates_inclusion_of :price, in:300..9999999
+  validates_inclusion_of :price, in: 300..9_999_999
   validates :category_id, :status_id, :charge_id, :area_id, :day_id, numericality: { other_than: 1 }
   validates :price, numericality: true
 end

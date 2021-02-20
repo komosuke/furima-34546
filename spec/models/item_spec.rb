@@ -25,32 +25,32 @@ RSpec.describe Item, type: :model do
       it 'category_idが1では出品できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it 'status_idが1では出品できない' do
         @item.status_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
       it 'charge_idが1では出品できない' do
         @item.charge_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charge must be other than 1")
+        expect(@item.errors.full_messages).to include('Charge must be other than 1')
       end
       it 'area_idが1では出品できない' do
         @item.area_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area must be other than 1")
+        expect(@item.errors.full_messages).to include('Area must be other than 1')
       end
       it 'day_idが1では出品できない' do
         @item.day_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day must be other than 1")
+        expect(@item.errors.full_messages).to include('Day must be other than 1')
       end
       it 'priceが空では出品できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank",)
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'imageが空では出品できない' do
         @item.image = nil
@@ -60,22 +60,22 @@ RSpec.describe Item, type: :model do
       it 'priceが¥300以下では出品できない' do
         @item.price = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceが¥9999999以上では出品できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceが半角数字でなければ出品できない' do
         @item.price = '５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'userが紐付いていないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
