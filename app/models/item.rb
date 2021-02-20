@@ -17,5 +17,4 @@ class Item < ApplicationRecord
 
   validates_inclusion_of :price, in: 300..9_999_999
   validates :category_id, :status_id, :charge_id, :area_id, :day_id, numericality: { other_than: 1 }
-  validates :price, numericality: true
 end
