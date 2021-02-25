@@ -3,10 +3,10 @@ class PurchaseShipping
   attr_accessor :postal_code, :area_id, :city, :address, :building, :phone, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :postal_code
+    validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
     validates :city
     validates :address
-    validates :phone
+    validates :phone, format: {with: /\A\d{1,11}\z/}
     validates :user_id
     validates :item_id
     validates :token
