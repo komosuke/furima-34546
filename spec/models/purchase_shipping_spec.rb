@@ -6,6 +6,7 @@ RSpec.describe PurchaseShipping, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @purchase_shipping = FactoryBot.build(:purchase_shipping, user_id: user.id, item_id: item.id)
+      sleep 0.5
     end
 
     context '商品購入できるとき' do
@@ -47,6 +48,16 @@ RSpec.describe PurchaseShipping, type: :model do
         @purchase_shipping.phone = '090123456789'
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include('Phone is invalid')
+      end
+      it 'user_idが空では購入できない' do
+        @purchase_shipping.user_id = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空では購入できない' do
+        @purchase_shipping.item_id = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
