@@ -42,6 +42,3 @@ end
 def move_to_index
   redirect_to root_path if @item.user == current_user || @item.purchase.present?
 end
-
-
-

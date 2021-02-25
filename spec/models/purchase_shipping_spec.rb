@@ -29,24 +29,24 @@ RSpec.describe PurchaseShipping, type: :model do
         expect(@purchase_shipping.errors.full_messages).to include("Area can't be blank")
       end
       it 'cityが空では購入できない' do
-        @purchase_shipping.city = ""
+        @purchase_shipping.city = ''
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("City can't be blank")
       end
       it 'tokenが空では購入できない' do
-        @purchase_shipping.token = ""
+        @purchase_shipping.token = ''
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Token can't be blank")
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと購入できない' do
-        @purchase_shipping.postal_code = "123456"
+        @purchase_shipping.postal_code = '123456'
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Postal code is invalid")
+        expect(@purchase_shipping.errors.full_messages).to include('Postal code is invalid')
       end
       it 'phoneが11桁以内の数値でないと購入できない' do
-        @purchase_shipping.phone = "090123456789"
+        @purchase_shipping.phone = '090123456789'
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Phone is invalid")
+        expect(@purchase_shipping.errors.full_messages).to include('Phone is invalid')
       end
     end
   end
