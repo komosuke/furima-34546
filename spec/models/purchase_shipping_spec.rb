@@ -59,6 +59,21 @@ RSpec.describe PurchaseShipping, type: :model do
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
       end
+      it 'addressが空では購入できない' do
+        @purchase_shipping.address = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Address can't be blank")
+      end
+      it 'phoneが全角では購入できない' do
+        @purchase_shipping.phone = '０９０１２３４５６７８９'
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include('Phone is invalid')
+      end
+      it 'phoneに数字以外が混ざっていると購入できない' do
+        @purchase_shipping.phone = '0901234567ab'
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include('Phone is invalid')
+      end
     end
   end
 end

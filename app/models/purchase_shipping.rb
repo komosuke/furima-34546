@@ -6,7 +6,7 @@ class PurchaseShipping
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :city
     validates :address
-    validates :phone, format: { with: /\A\d{1,11}\z/ }
+    validates :phone, format: { with: /\A\d{10,11}\z/ }
     validates :user_id
     validates :item_id
     validates :token
